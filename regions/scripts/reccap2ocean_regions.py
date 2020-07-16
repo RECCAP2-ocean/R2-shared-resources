@@ -135,6 +135,9 @@ def make_reccap_region_options():
     # fixing NA miss-numbering
     xds.option4.values[xds.option4.values == 0] += 1
     
+    mask = (xds.option4 == 4) & (xds.lat < 56) 
+    xds.option4.values[mask] = 1
+    
     xds['fay_mckinley'] = biomes
     xds['woa_regions'] = woa_basins
     
