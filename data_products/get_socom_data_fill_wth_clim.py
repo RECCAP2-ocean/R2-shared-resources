@@ -192,8 +192,8 @@ def get_mpisomffn():
 
 def get_jenamls():
     url = 'http://www.bgc-jena.mpg.de/CarboScope/oc/INVERSION/OUTPUT/oc_v1.7_pCO2_daily.nc'
-    username = 'CO2inv'
-    password = '.flux.'
+    username = '**'
+    password = '**'
     fname = pooch.retrieve(
         url, None, 
         fname='Jena-MLS_v1.7_pCO2.nc', 
@@ -218,8 +218,8 @@ def get_jenamls():
 def get_lsceffnn2():
 
     url = 'ftp://my.cmems-du.eu/Core/MULTIOBS_GLO_BIO_CARBON_SURFACE_REP_015_008/dataset-carbon-rep-monthly/{t:%Y}/{name}'
-    username = 'lgregor1'
-    password = 'a%oN23a#CH13^@'
+    username = '**'
+    password = '**'
     
     flist = []
     for t in pd.date_range('1985-01', '2019', freq='1MS', closed='left'):
