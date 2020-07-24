@@ -205,7 +205,7 @@ def get_jenamls():
 
     xda = (xda
      .resample(mtime='1MS').mean('mtime')
-     .interp(lat=np.arange(-89.5, 90), lon=np.arange(-179.5, 180))
+     .interp(lat=np.arange(-89.5, 90), lon=np.arange(-179.5, 180), method='linear')
      .roll(lon=180, roll_coords=False)
      .interpolate_na('lon', limit=20)
      .roll(lon=-180, roll_coords=False)
