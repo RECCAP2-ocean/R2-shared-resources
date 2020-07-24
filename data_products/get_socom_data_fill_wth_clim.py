@@ -201,15 +201,16 @@ def get_jenamls():
         downloader=pooch.HTTPDownloader(progressbar=True, auth=(username, password)))
     
     xds = xr.open_dataset(fname)
-    xda = xds.pCO2.resample(mtime='1MS').mean('mtime')
+    xda = xds.pCO2
 
-    xda = xda.rename("jena_mls")
     xda = (xda
+     .resample(mtime='1MS').mean('mtime')
      .interp(lat=np.arange(-89.5, 90), lon=np.arange(-179.5, 180))
      .roll(lon=180, roll_coords=False)
      .interpolate_na('lon', limit=20)
      .roll(lon=-180, roll_coords=False)
      .rename(mtime='time')
+     .rename("jena_mls")
     )
 
     return xda
