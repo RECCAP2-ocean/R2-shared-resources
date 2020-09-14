@@ -16,7 +16,9 @@ def main():
     xds['indian']   = (xds.fay_mckinley.fillna(13)).where(xds.basins == 3) - 12
     xds['arctic']   = (xds.fay_mckinley.fillna( 3)).where(xds.basins == 4) - 2
     xds['southern'] = (xds.fay_mckinley.fillna(14)).where(xds.basins == 5) - 13
-
+    
+    xds = xds.drop(['fay_mckinley', 'woa_regions']).rename(basins='reccap2_ocean_regions')
+    
     encoding = {
         k: {'zlib': True, 'complevel': 4}
         for k in xds.data_vars
@@ -70,7 +72,9 @@ def make_reccap_region_options():
     basins = woa_basins.copy() * np.nan
     # one can run basin_list to see how I made the new_basin_num
     # basin_list = {n+1: b for n, b in enumerate(woa_basins.CLIST[2:-2].split(') ('))}
+    
     new_basin_num = {1:1, 2:2, 3:3, 56:3, 11:4, 10:5}
+    
     for k, v in new_basin_num.items():
         mask = woa_basins.values == k
         basins.values[mask] = v
