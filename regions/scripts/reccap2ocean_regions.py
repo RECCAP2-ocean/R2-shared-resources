@@ -115,7 +115,7 @@ def add_final_attributes_and_names(xds):
 
     xds.indian.attrs['region_names'] = (
         '1.IND STPS, '
-        '2.(not in FM14), '
+        '2.(not in FM14)'
     )
 
     xds.arctic.attrs['region_names'] = (
