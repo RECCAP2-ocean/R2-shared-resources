@@ -7,7 +7,7 @@ The areas where FM14 does not have data have been ingested by the neighboring bi
 
 ## Coastal ocean
 
-For the coastal ocean, we could use the COSCATs coastal regions as a mask (Laurelle et al. 2013). The map below was made from the shapefile and converted to a binned 1° map. 
+For the coastal ocean, we could use the MARCATs coastal regions as a mask (Laurelle et al. 2013). The map below was made from the shapefile and converted to a binned 1° map. 
 
 Note that this has not been discussed and is only a suggestion! Further topics for discussion include how coastal ocean will be integrated with open ocean flux estimates. 
 
