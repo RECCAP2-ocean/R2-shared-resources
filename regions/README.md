@@ -1,7 +1,11 @@
 # RECCAP2-ocean regions 
 
 We have used the biomes of Fay and McKinley to divide the basins into subregions. 
-The areas where FM14 does not have data have been ingested by the neighboring biome or a new distinct biome has been added, as noted in the figure below. 
+The areas where FM14 does not have data have been ingested by the neighboring biome or a new distinct biome has been added. 
+Stray and missplaced pixels have been ingested into the surrounding biomes. 
+The figure below shows the masks for the file [RECCAP2_region_masks_all_v20210412.nc](https://github.com/RECCAP2-ocean/shared-resources/blob/master/regions/RECCAP2_region_masks_all_v20210412.nc). 
+Region names are stored as the attribute `region_names` for each variable in the netCDF file. The names are based on the Fay and McKinley biomes. 
+
 ![](img/RECCAP2_region_masks_all_v20210412.png)
 
 
