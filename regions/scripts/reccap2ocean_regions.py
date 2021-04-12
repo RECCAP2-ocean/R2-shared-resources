@@ -54,23 +54,28 @@ def main():
         
     xds = (xds
            .drop(['fay_mckinley', 'woa_regions'])
-           .rename(basins='reccap2_ocean_regions')
+           .rename(basins='open_ocean')
            .where(create_seamask())  # everything is clipped to our seamask
            .fillna(0)  # fill the clipped regions with 0
            .astype(int)  # and set the type as integer
           )
     
-    xds = add_final_attributes_and_names(xds)
-    
     encoding = {
         k: {'zlib': True, 'complevel': 4}
         for k in xds.data_vars
     }
+    
+    regions = ['atlantic', 'pacific', 'indian', 'arctic', 'southern']
+    for key in regions:
+        roll = 180 if (key == 'atlantic') or (key == 'open_ocean') else 0
+        xds[key] = fill_missplaced_blobs(xds[key], shift_lon=roll).astype(int)
+    
+#     xds['coast'] = (xds.coastal_marcats > 0).astype(int)
+#     xds = xds.drop('coastal_marcats')
+    
+    xds = add_final_attributes_and_names(xds)
 
-    xds.to_netcdf(
-        '../reccap2ocean_regions.nc',
-        encoding=encoding,
-    )
+    return xds
 
 
 def add_final_attributes_and_names(xds):
@@ -91,7 +96,7 @@ def add_final_attributes_and_names(xds):
         "dict([r.strip().split('.') for r in region_names.split(',')])"
     )
 
-    xds.reccap2_ocean_regions.attrs['region_names'] = (
+    xds.open_ocean.attrs['region_names'] = (
         '1.Atlantic, 2.Pacific, 3.Indian, 4.Arctic, 5.Southern'
     )
 
@@ -133,8 +138,7 @@ def add_final_attributes_and_names(xds):
     
     return xds
     
-    
-    
+     
 def fill_non_FM14_regions(sub_regions, global_mask, indicies):
     xda = sub_regions.astype(float)
     
@@ -315,8 +319,53 @@ def create_seamask():
     return mask
 
 
-if __name__ == "__main__":
-    main()
+def fill_missplaced_blobs(xda, shift_lon=0):
+    seamask = create_seamask()
+    def fill_in_islands(xda, shift_lon=0):
+        import copy 
+        out = xda
+        mask = xda == 0
+        for key in out.coords.keys():
+            try:
+                out = out.interpolate_na(key, limit=3, method='nearest')
+                out = out.assign_coords({key: lambda a: a[key].values[::-1]})
+                out = out.sortby(key)
+                out = out.interpolate_na(key, limit=3, method='nearest')
+                out = out.assign_coords({key: lambda a: a[key].values[::-1]})
+                out = out.sortby(key)
+            except ValueError:
+                pass
+        return out.where(seamask)
+    
+    def mask_pixel_islands(arr, shiftd1=0):
+        from scipy import ndimage
+        
+        arr = np.roll(arr, shiftd1, axis=1)
+        mask = []
+        imax = int(np.nanmax(arr))
+        for i in range(1, imax + 1):
+            values = (arr == i).astype(int)
+
+            kernel = [
+                [0, 1, 0],
+                [1, 1, 1],
+                [0, 1, 0]
+            ]
+            labels = ndimage.label(values, structure=kernel)[0]
+            idx, cnt = np.unique(labels, return_counts=True)
+
+            keep = idx[cnt > 20]
+            mask += np.isin(labels, keep),
+
+        mask = np.all(mask, axis=0)
+        mask = np.roll(mask, -shiftd1, axis=1)
+        return mask
+
+    mask = mask_pixel_islands(xda.values, shiftd1=shift_lon)
+    out = xda.where(lambda a: (a!=0) & mask)
+    out = fill_in_islands(out)
+    out = out.fillna(0)
+    return out
 
 
 if __name__ == "__main__":
