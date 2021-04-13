@@ -13,5 +13,7 @@
 *.tar
 *.gz
 
+/data/raw/*
+
 !data/regions/*.nc
 !data/reccap2_data.yml

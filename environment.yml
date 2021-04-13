@@ -5,13 +5,21 @@ dependencies:
   - matplotlib
   - cartopy
   - xarray
+  - netCDF4
   - pandas
   - numpy
   - fsspec
   - seaborn
+  - joblib
+  - dask
   - pip
   - pip:
     - cmocean
     - munch
     - mergedeep
     - pooch
+    - python-dotenv
+    - envyaml
+    - aiohttp
+    - tqdm
+    - datetime_matcher

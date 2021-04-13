@@ -126,6 +126,7 @@ def model_surface_co2(
 def socat2020(
     data_dict, 
     variables=['fco2_ave_unwtd', 'fco2_std_unwtd'], 
+    processed_dest='../data/processed/socat2020_monthlygridded.nc', 
     verbose=True, 
     **kwargs
 ):
@@ -133,19 +134,36 @@ def socat2020(
     import xarray as xr
     from .preprocess import preprocess 
     from .download import download, flatten_list as _flatten, read_catalog
+    from pathlib import Path as path
+    from xarray import open_dataset
+    
+    if path(processed_dest).is_file():
+        return open_dataset(processed_dest)
     
     socat = xr.open_mfdataset(
         download(**data_dict, verbose=verbose, **kwargs), 
         preprocess=preprocess(decode_times=False)
     )[variables]
     
+    socat.to_netcdf(processed_dest, encoding={k: dict(zlib=True, complevel=4) for k in socat})
+    
     return socat
 
 
-def soccom_float_liar(data_dict, verbose=True, **kwargs):
+def soccom_float_liar(
+    data_dict, 
+    processed_dest='../data/processed/soccom_float_liar.nc', 
+    verbose=True, 
+    **kwargs
+):
     from .non_reccap_data import grid_soccom_argo_float
     from .preprocess import preprocess 
     from .download import download, flatten_list as _flatten, read_catalog
+    from pathlib import Path as path
+    from xarray import open_dataset
+    
+    if path(processed_dest).is_file():
+        return open_dataset(processed_dest)
     
     flist = _flatten(download(**data_dict, verbose=verbose, **kwargs))
     flist = [f for f in flist if f.endswith('.nc')]
@@ -168,6 +186,8 @@ def soccom_float_liar(data_dict, verbose=True, **kwargs):
         TALK_LIAR='talk',
         DIC_LIAR='dissic',
     )
+    
+    liar.to_netcdf(processed_dest, encoding={k: dict(zlib=True, complevel=4) for k in liar})
 
     return liar
 
