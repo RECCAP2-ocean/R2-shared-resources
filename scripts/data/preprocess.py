@@ -144,7 +144,11 @@ def time_decoder(xds):
         return xds
 
     if xds.time.attrs.get('units', None):
-        return xr.decode_cf(xds)
+        xds = xr.decode_cf(xds)
+        xds['time'] = xr.DataArray(
+            xds.time.values.astype('datetime64[D]'), 
+            dims=('time',))
+        return xds
     
     t = xds.time.values.astype(int)
 

@@ -13,7 +13,7 @@ import pooch
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 logging.basicConfig(
     level=15, 
-    format="%(asctime)s [DOWNLOAD]  %(message)s", 
+    format="%(asctime)s [RECCAP]  %(message)s", 
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 

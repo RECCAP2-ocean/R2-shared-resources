@@ -193,8 +193,12 @@ def soccom_float_liar(
 
 
 class _RECCAP_dict(_munch):
-    
-    def data(self, dim_name='variable'):
+        
+    @property
+    def data(self):
+        if hasattr(self, '_data'):
+            return self._data
+        
         from xarray import concat, merge, DataArray
         from pandas import Index
         is_array = [isinstance(self[k], DataArray) for k in self]
@@ -205,13 +209,16 @@ class _RECCAP_dict(_munch):
                 xda = concat([self[k] for k in self], dim=idx)
             except:
                 xda = merge([self[k] for k in self])
-            return xda
+            self._data = xda
+            return self._data
         else:
             dataarrays = []
             for k in self:
                 if isinstance(self[k], self.__class__):
-                    dataarrays += self[k].data(),
-            return merge(dataarrays)
+                    dataarrays += self[k].data,
+            xds = merge(dataarrays)
+            self._data = xds
+            return self._data
         
     def __repr__(self):
         def get_info(obj):
