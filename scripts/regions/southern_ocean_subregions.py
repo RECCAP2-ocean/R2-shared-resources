@@ -1,20 +1,6 @@
 from reccap2_ocean_regions import get_CO2_biomes
 
 
-def main():
-    xds = southern_ocean_subregions()
-
-    encoding = {
-        k: {'zlib': True, 'complevel': 4}
-        for k in xds.data_vars
-    }
-
-    xds.to_netcdf(
-        '../reccap2ocean_SOsubregions.nc',
-        encoding=encoding,
-    )
-
-
 def southern_ocean_subregions():
 
     biomes = get_CO2_biomes()
@@ -37,4 +23,4 @@ def southern_ocean_subregions():
 
 
 if __name__ == "__main__":
-    main()
+    southern_oucean_subregions()

@@ -3,5 +3,15 @@
 **.pyc
 **-checkpoint.ipynb
 **.ipynb_checkpoints
+**__pycache__
 
 .vscode
+
+*.nc
+*.zip
+*.ZIP
+*.tar
+*.gz
+
+!data/regions/*.nc
+!data/reccap2_data.yml

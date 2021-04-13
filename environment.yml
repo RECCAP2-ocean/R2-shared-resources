@@ -1,0 +1,17 @@
+name: reccap2
+channels:
+  - conda-forge
+dependencies:
+  - matplotlib
+  - cartopy
+  - xarray
+  - pandas
+  - numpy
+  - fsspec
+  - seaborn
+  - pip
+  - pip:
+    - cmocean
+    - munch
+    - mergedeep
+    - pooch

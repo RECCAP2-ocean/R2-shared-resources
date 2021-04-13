@@ -69,10 +69,7 @@ def main():
     for key in regions:
         roll = 180 if (key == 'atlantic') or (key == 'open_ocean') else 0
         xds[key] = fill_missplaced_blobs(xds[key], shift_lon=roll).astype(int)
-    
-#     xds['coast'] = (xds.coastal_marcats > 0).astype(int)
-#     xds = xds.drop('coastal_marcats')
-    
+
     xds = add_final_attributes_and_names(xds)
 
     return xds

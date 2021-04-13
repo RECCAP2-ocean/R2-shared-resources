@@ -1,3 +1,10 @@
+"""
+Warning this script should not be used. 
+We are using the data from the coastal group in the data folder
+"""
+
+print(__docs__)
+
 import pooch
 import numpy as np
 import geopandas as gpd
@@ -41,7 +48,7 @@ def main():
     }
 
     continental_shelf.to_netcdf(
-        '../reccap2coastal_coscats.nc',
+        '../data/regions/reccap2coastal_coscats.nc',
         encoding=encoding,
     )    
 

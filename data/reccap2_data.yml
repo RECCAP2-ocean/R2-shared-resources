@@ -1,0 +1,75 @@
+
+soccom_liar:
+    name: LIARv2 SOCCOM float data (2021-03-23)
+    dest: ../data/raw/floats_liar2/
+    url: https://soccompu.princeton.edu/FloatViz_Data/SOCCOM_LRQC_LIAR_netcdf_20210323.zip
+    meta: 
+        doi: https://library.ucsd.edu/dc/object/bb94601812
+        citation: >
+          Carter, B.R., Feely, R.A., Williams, N.L., Dickson, A.G., Fong, M.B. and Takeshita, Y. (2018), Updated methods for global locally interpolated estimation of alkalinity, pH, and nitrate. Limnol. Oceanogr. Methods, 16: 119-131. https://doi.org/10.1002/lom3.10232
+        description: >
+            Source: https://soccompu.princeton.edu/www/index.html
+            We have taken advantage of the release of version 2 of the Global Data Analysis Project data product (Olsen et al. 2016) to refine the locally interpolated alkalinity regression (LIAR) code for global estimation of total titration alkalinity of seawater (AT), and to extend the method to also produce estimates of nitrate (N) and in situ pH (total scale). The updated MATLAB software and methods are distributed as Supporting Information for this article and referred to as LIAR version 2 (LIARv2), locally interpolated nitrate regression (LINR), and locally interpolated pH regression (LIPHR). Collectively they are referred to as locally interpolated regressions (LIRs). Relative to LIARv1, LIARv2 has an 18% lower average AT estimate root mean squared error (RMSE), improved uncertainty estimates, and fewer regions in which the method has little or no available training data. LIARv2, LINR, and LIPHR produce estimates globally with skill that is comparable to or better than regional alternatives used in their respective regions. LIPHR pH estimates have an optional adjustment to account for ongoing ocean acidification. We have used the improved uncertainty estimates to develop LIR functionality that selects the lowest‐uncertainty estimate from among possible estimates. Current and future versions of LIR software will be available on GitHub at https://github.com/BRCScienceProducts/LIRs.
+    
+
+socat_pco2:
+    name: SOCAT v2020 gridded
+    dest: ../data/raw/socat_pco2/
+    url: https://www.socat.info/socat_files/v2020/SOCATv2020_tracks_gridded_monthly.nc.zip
+    meta:
+        doi: http://www.earth-syst-sci-data.net/8/383/2016/essd-8-383-2016.html
+        citation: >
+            Bakker, D. C. E., Pfeil, B., Landa, C. S., Metzl, N., O'Brien, K. M., Olsen, A., Smith, K., Cosca, C., Harasawa, S., Jones, S. D., Nakaoka, S., Nojiri, Y., Schuster, U., Steinhoff, T., Sweeney, C., Takahashi, T., Tilbrook, B., Wada, C., Wanninkhof, R., Alin, S. R., Balestrini, C. F., Barbero, L., Bates, N. R., Bianchi, A. A., Bonou, F., Boutin, J., Bozec, Y., Burger, E. F., Cai, W.-J., Castle, R. D., Chen, L., Chierici, M., Currie, K., Evans, W., Featherstone, C., Feely, R. A., Fransson, A., Goyet, C., Greenwood, N., Gregor, L., Hankin, S., Hardman-Mountford, N. J., Harlay, J., Hauck, J., Hoppema, M., Humphreys, M. P., Hunt, C. W., Huss, B., Ibánhez, J. S. P., Johannessen, T., Keeling, R., Kitidis, V., Körtzinger, A., Kozyr, A., Krasakopoulou, E., Kuwata, A., Landschützer, P., Lauvset, S. K., Lefèvre, N., Lo Monaco, C., Manke, A., Mathis, J. T., Merlivat, L., Millero, F. J., Monteiro, P. M. S., Munro, D. R., Murata, A., Newberger, T., Omar, A. M., Ono, T., Paterson, K., Pearce, D., Pierrot, D., Robbins, L. L., Saito, S., Salisbury, J., Schlitzer, R., Schneider, B., Schweitzer, R., Sieger, R., Skjelvan, I., Sullivan, K. F., Sutherland, S. C., Sutton, A. J., Tadokoro, K., Telszewski, M., Tuma, M., van Heuven, S. M. A. C., Vandemark, D., Ward, B., Watson, A. J., and Xu, S.: A multi-decade record of high-quality fCO2 data in version 3 of the Surface Ocean CO2 Atlas (SOCAT), Earth Syst. Sci. Data, 8, 383–413, https://doi.org/10.5194/essd-8-383-2016, 2016.
+        description: >
+            The Surface Ocean CO2 Atlas (SOCAT) is a synthesis of quality-controlled fCO2 (fugacity of carbon dioxide) values for the global surface oceans and coastal seas with regular updates.Version 3 of SOCAT has 14.7 million fCO2 values from 3646 data sets covering the years 1957 to 2014. This latest version has an additional 4.6 million fCO2 values relative to version 2 and extends the record from 2011 to 2014. Version 3 also significantly increases the data availability for 2005 to 2013. SOCAT has an average of approximately 1.2 million surface water fCO2 values per year for the years 2006 to 2012. Quality and documentation of the data has improved. A new feature is the data set quality control (QC) flag of E for data from alternative sensors and platforms. The accuracy of surface water fCO2 has been defined for all data set QC flags. Automated range checking has been carried out for all data sets during their upload into SOCAT. The upgrade of the interactive Data Set Viewer (previously known as the Cruise Data Viewer) allows better interrogation of the SOCAT data collection and rapid creation of high-quality figures for scientific presentations. Automated data upload has been launched for version 4 and will enable more frequent SOCAT releases in the future. High-profile scientific applications of SOCAT include quantification of the ocean sink for atmospheric carbon dioxide and its long-term variation, detection of ocean acidification, as well as evaluation of coupled-climate and ocean-only biogeochemical models. Users of SOCAT data products are urged to acknowledge the contribution of data providers, as stated in the SOCAT Fair Data Use Statement. This ESSD (Earth System Science Data) "living data" publication documents the methods and data sets used for the assembly of this new version of the SOCAT data collection and compares these with those used for earlier versions of the data collection (Pfeil et al., 2013; Sabine et al., 2013; Bakker et al., 2014). Individual data set files, included in the synthesis product, can be downloaded here: doi:10.1594/PANGAEA.849770. The gridded products are available here: doi:10.3334/CDIAC/OTG.SOCAT_V3_GRID.
+       
+
+surface_co2:
+  name: RECCAP2 Surface ocean pCO2 data products
+  dest: ../data/raw/obs_surface_co2/
+  url: ftp://ftp.bgc-jena.mpg.de/pub/outgoing/RECCAP2/32yTa68UrnNxJ6VYndOI/Ocean/Surface_CO2/*
+  meta:
+    doi: https://reccap2-ocean.github.io
+    citation: Please see indidividual data products for citations
+    description: | 
+        Surface pCO2 data products from the RECCAP2 project. Contains the following data products:
+        CSIR-ML6, MPI-SOMFFN, Jena-MLS, JMA-MLR, NIES-FFNN, CMEMS-LSCE-FFNN, UOEX-Wat20
+
+
+model_surface_co2:
+  dest: ../data/raw/model_surface_co2/
+  url: ftp://ftp.bgc-jena.mpg.de/pub/outgoing/RECCAP2/32yTa68UrnNxJ6VYndOI/Ocean/Models/2D_CO2/*
+  meta:
+    doi: https://reccap2-ocean.github.io
+    citation: no citation yet
+    description: Model pCO2 data products for only surface from the RECCAP2 project. 
+
+
+model_3d_all:
+  dest: ../data/raw/model_3d_all/
+  url: ftp://ftp.bgc-jena.mpg.de/pub/outgoing/RECCAP2/32yTa68UrnNxJ6VYndOI/Ocean/Models/3D_ALL/*
+  meta:
+    doi: https://reccap2-ocean.github.io
+    citation: no citation yet
+    description: Model pCO2 data products for only surface from the RECCAP2 project. 
+    
+
+model_3d_ancillary:
+  dest: ../data/raw/model_3d_ancillary/
+  url: ftp://ftp.bgc-jena.mpg.de/pub/outgoing/RECCAP2/32yTa68UrnNxJ6VYndOI/Ocean/Models/Ancillary_data/*
+  meta:
+    doi: https://reccap2-ocean.github.io
+    citation: no citation yet
+    description: Model pCO2 data products for only surface from the RECCAP2 project. 
+
+
+atmospheric_inversions:
+    dest: ../data/raw/atmospheric_inversions/
+    url: ftp://ftp.bgc-jena.mpg.de/pub/outgoing/RECCAP2/32yTa68UrnNxJ6VYndOI/Ocean/Atmospheric_inversions/*
+    meta:
+        doi: https://reccap2-ocean.github.io
+        citation: no citation yet
+        description: >
+            Atmospheric inversions over the ocean submitted for the RECCAP 2 project
+
+
