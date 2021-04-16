@@ -195,7 +195,7 @@ def soccom_float_liar(
 class _RECCAP_dict(_munch):
         
     @property
-    def data(self):
+    def data(self, dim_name='variable'):
         if hasattr(self, '_data'):
             return self._data
         
