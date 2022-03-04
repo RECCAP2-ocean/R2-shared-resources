@@ -1,4 +1,4 @@
-# RECCAP 2 Ocean shared resources
+# RECCAP2-ocean shared resources
 
 This is a code repository where shared code can be uploaded. Contact Luke if you've got code that you think would be useful for the entire RECCAP2 ocean group. 
 
