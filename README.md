@@ -25,3 +25,4 @@ conda activate reccap2
   3. Merge data based on variable
 
 - `scripts/plot`: sets the configuration for plotting to have a nice simple style. Also supports mapping with `cartopy`
+- `scripts/map`: makes it easy to plot with xarray DataArrays
